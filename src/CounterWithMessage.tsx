@@ -1,9 +1,9 @@
 import {CounterValue} from "./CounterValue";
 
-export function CounterWithMessage(props : any) {
+export function CounterWithMessage() {
     return (
         <div>
-            <CounterValue count = {props.counter}></CounterValue>
+            <CounterValue/>
             <p>Intense counting</p>
         </div>
     )

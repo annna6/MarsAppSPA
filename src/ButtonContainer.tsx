@@ -1,5 +1,8 @@
-export function ButtonContainer(props : any) {
+import {useContext} from "react";
+import {CounterContext, CounterInterface} from "./CounterContainer";
+export function ButtonContainer() {
+    const counterContext : CounterInterface | null = useContext(CounterContext);
     return (
-        <button onClick={props.incrementCounter}> Click me </button>
+        <button onClick={counterContext?.incrementCounter}> Click me </button>
     );
 }

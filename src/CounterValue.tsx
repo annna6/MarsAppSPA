@@ -1,5 +1,8 @@
-export function CounterValue(props : any) {
+import {useContext} from "react";
+import {CounterContext, CounterInterface} from "./CounterContainer";
+export function CounterValue() {
+    const counterContext : CounterInterface | null = useContext(CounterContext);
     return (
-        <span> Hello {props.count} </span>
+        <span> Hello {counterContext?.value} </span>
     )
 }

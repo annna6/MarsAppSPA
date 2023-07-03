@@ -1,23 +1,31 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, createContext, useEffect, useState} from "react";
 import { CounterWithMessage } from "./CounterWithMessage";
 import { ButtonContainer } from "./ButtonContainer";
+export interface CounterInterface {
+    value : number,
+    incrementCounter : any
+}
+
+export const CounterContext = createContext<CounterInterface | null>(null);
 
 export function CounterContainer() {
-    const [count, setCount] = useState<number>(0);
+    const [counter, setCounter] = useState<number>(0);
     useEffect(() : void => {
-        let countKey : string | null = localStorage.getItem("count");
-        setCount(countKey ? Number(countKey) : 0);
+        let countKey : string | null = localStorage.getItem("counter");
+        setCounter(countKey ? Number(countKey) : 0);
     }, []);
 
     function incrementCounter() : void {
-        localStorage.setItem("count", JSON.stringify(count + 1));
-        setCount(count + 1);
+        localStorage.setItem("counter", JSON.stringify(counter + 1));
+        setCounter(counter + 1);
     }
 
     return (
         <div>
-            <ButtonContainer incrementCounter={incrementCounter}/>
-            <CounterWithMessage counter={count}/>
+            <CounterContext.Provider value={{value: counter, incrementCounter: incrementCounter}}>
+                <ButtonContainer/>
+                <CounterWithMessage/>
+            </CounterContext.Provider>
         </div>
     )
 }
