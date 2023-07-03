@@ -1,6 +1,7 @@
-import React, {useContext, createContext, useEffect, useState} from "react";
+import React, { createContext, useEffect, useState} from "react";
 import { CounterWithMessage } from "./CounterWithMessage";
 import { ButtonContainer } from "./ButtonContainer";
+import "./Counter.scss";
 export interface CounterInterface {
     value : number,
     incrementCounter : any
@@ -23,8 +24,10 @@ export function CounterContainer() {
     return (
         <div>
             <CounterContext.Provider value={{value: counter, incrementCounter: incrementCounter}}>
-                <ButtonContainer/>
-                <CounterWithMessage/>
+                <div className="counter-container">
+                    <ButtonContainer/>
+                    <CounterWithMessage/>
+                </div>
             </CounterContext.Provider>
         </div>
     )

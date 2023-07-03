@@ -1,0 +1,28 @@
+$primary-color: lightblue;
+$max-width: 1000px;
+$margin-default: 25px;
+
+.text-template {
+    text-align: center;
+    background-color: $primary-color;
+    width: 80%;
+    margin: 30px;
+    border-radius: $margin-default;
+}
+
+.text-template > * {
+    margin: $margin-default;
+}
+
+.text-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: justify;
+}
+
+img {
+    max-width: $max-width;
+    border-radius: 100px;
+}
+

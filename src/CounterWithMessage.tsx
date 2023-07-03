@@ -4,7 +4,7 @@ export function CounterWithMessage() {
     return (
         <div>
             <CounterValue/>
-            <p>Intense counting</p>
+            <p>Intensive counting</p>
         </div>
     )
 }

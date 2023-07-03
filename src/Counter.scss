@@ -1,0 +1,28 @@
+$button-primary: lightblue;
+$button-gap: 25px;
+
+.counter-container {
+    display: flex;
+    background-color: white;
+    width: fit-content;
+    padding: 15px;
+    border-radius: 30px;
+    margin: $button-gap
+}
+
+p, span {
+    text-align: center;
+    margin: $button-gap;
+}
+
+button {
+    padding: 10px;
+    background-color: $button-primary;
+    border-radius: 5px;
+}
+
+button:hover {
+    opacity: 90%;
+}
+
+@import "App.scss";
