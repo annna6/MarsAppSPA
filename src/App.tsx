@@ -1,25 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import logo from "./assets/logo192.png"
+import {TextTemplate} from "./TextTemplate";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <TextTemplate className="textStyling" image_src={logo} title={"Hello, NASA!"} paragraphs={["first paragraph", "second paragraph"]}/>
   );
 }
 
