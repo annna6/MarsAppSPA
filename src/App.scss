@@ -12,6 +12,7 @@ nav > * {
 
 nav > ul > li:hover {
   font-weight: bold;
+  cursor: pointer;
 }
 
 .wrapper {
@@ -24,7 +25,13 @@ nav > ul > li:hover {
   align-content: center;
 }
 
+.select-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
 .select-styling {
-  width: 50%;
-  margin: 0 auto;
+  width: 30%;
+  margin: 15px;
 }
