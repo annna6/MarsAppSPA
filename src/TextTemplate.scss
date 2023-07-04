@@ -10,6 +10,18 @@ $margin-default: 25px;
     border-radius: $margin-default;
 }
 
+.text-template h1 {
+    text-shadow: 5px 5px darkblue;
+    font-size: 5em;
+    margin-top: 1em;
+    transition: text-shadow 0.5s ease-in-out;
+}
+
+.text-template h1:hover {
+    text-shadow: 3px 3px darkcyan;
+    transition: text-shadow 0.5s ease-in-out;
+}
+
 .text-template > * {
     margin: $margin-default;
 }
