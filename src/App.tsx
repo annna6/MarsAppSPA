@@ -6,7 +6,8 @@ import "./App.scss";
 import mock_rover from "./assets/mock-rover.jpg"
 import Select, {SingleValue} from 'react-select';
 import {ImageContainer} from "./ImageContainer";
-
+import { Range } from "react-range";
+import {Slider} from "@mui/material";
 export interface ContainerProps {
     title: string,
     firstParagraph: string,
@@ -44,6 +45,7 @@ function App() {
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
     const [currentPhotos, setCurrentPhotos] = useState<string[]>([]);
     const [hasSentFirstRequest, setHasSentFirstRequest] = useState<boolean>(false);
+    const [currentSol, setCurrentSol] = useState<number | number[]>(1000);
 
     useEffect(() : void => {
         fetch("http://localhost:8000/rovers/",
@@ -62,7 +64,7 @@ function App() {
             if (!hasSentFirstRequest) {
                 setHasSentFirstRequest(true);
             }
-            fetch(`http://localhost:8000/rovers/${currentRover}/photos/${currentCamera}/1000`)
+            fetch(`http://localhost:8000/rovers/${currentRover}/photos/${currentCamera}/${currentSol}`)
                 .then(response => response.json())
                 .then((parsedResponse) : void => {
                     setCurrentPhotos(parsedResponse.map((photo : any) : string => photo.src));
@@ -101,24 +103,35 @@ function App() {
               <Route path="/" element = {
                   <div>
                       <div className="select-container">
-                      <Select
-                          placeholder="Rover"
-                          className="select-styling"
-                          onChange={(choice : SingleValue<SelectOptions>) : void => {
-                              setCurrentRover(choice ? choice.value : "");
-                              setCurrentCameras(getCamerasForRover(choice ? choice.value : ""));
-                          }}
-                          options={rovers.map((rover : Rover) : SelectOptions => {
-                              return { label: rover.name, value : rover.name}
-                          })}
-                      />
-                      <Select
-                          isDisabled={currentCameras.length === 0}
-                          placeholder="Camera"
-                          className="select-styling"
-                          onChange={(choice : SingleValue<SelectOptions>) : void => { setCurrentCamera(choice ? choice.value : "")}}
-                          options={currentCameras}/>
-                      <button onClick={handleSubmit}> Search! </button>
+                          <Select
+                              placeholder="Rover"
+                              className="select-styling"
+                              onChange={(choice : SingleValue<SelectOptions>) : void => {
+                                  setCurrentRover(choice ? choice.value : "");
+                                  setCurrentCameras(getCamerasForRover(choice ? choice.value : ""));
+                              }}
+                              options={rovers.map((rover : Rover) : SelectOptions => {
+                                  return { label: rover.name, value : rover.name}
+                              })}
+                          />
+                          <Select
+                              isDisabled={currentCameras.length === 0}
+                              placeholder="Camera"
+                              className="select-styling"
+                              onChange={(choice : SingleValue<SelectOptions>) : void => { setCurrentCamera(choice ? choice.value : "")}}
+                              options={currentCameras}/>
+                          <Slider
+                              className="slider-style"
+                              size="small"
+                              aria-label="small"
+                              defaultValue={1000}
+                              step={1}
+                              onChange={(_, value) => setCurrentSol(value)}
+                              marks
+                              valueLabelDisplay="on"
+                              min={0}
+                              max={3850}/>
+                          <button disabled={currentCameras.length === 0} onClick={handleSubmit}> Search! </button>
                       </div>
                       <div className="container">
                           <TextTemplate image_src={mock_rover} title={"Rover Photos Finder"} firstParagraph={loremIpsum} secondParagraph={loremIpsum}/>

@@ -36,7 +36,38 @@ nav > ul > li:hover {
   height: fit-content;
   align-self: center;
 }
+
 .select-styling {
   width: 30%;
   margin: 15px;
+  align-self: center;
+
+}
+
+.sol-text-field {
+  margin-right: 20px !important;
+  align-self: center;
+}
+
+.slider-style {
+  width: 500px !important;
+  top: -25px;
+  left: -25px;
+  height: 0px !important;
+}
+
+.MuiSlider-valueLabel {
+  height: 15px !important;
+  width: 15px !important;
+  background-color: lightblue;
+}
+
+button {
+  padding: 10px;
+  background-color: lightblue;
+  border-radius: 5px;
+}
+
+button:hover(not:disabled) {
+  opacity: 90%;
 }

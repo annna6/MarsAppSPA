@@ -14,15 +14,3 @@ p, span {
     text-align: center;
     margin: $button-gap;
 }
-
-button {
-    padding: 10px;
-    background-color: $button-primary;
-    border-radius: 5px;
-}
-
-button:hover {
-    opacity: 90%;
-}
-
-@import "App.scss";
