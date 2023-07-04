@@ -1,4 +1,4 @@
-$nav-color: #0074D9;
+$nav-color: #1d4a6c;
 
 nav > * {
   background-color: $nav-color;
@@ -31,6 +31,11 @@ nav > ul > li:hover {
   align-content: center;
 }
 
+.select-container button {
+  width: 100px;
+  height: fit-content;
+  align-self: center;
+}
 .select-styling {
   width: 30%;
   margin: 15px;
